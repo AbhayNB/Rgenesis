@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReGenisis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+<div class="flex justify-center items-center min-h-screen">
+  
+  <div class="flex flex-col md:flex-row w-full max-w-6xl">
+  
+    <!-- Form Section (Left Half) -->
+    <div class="bg-white shadow-lg rounded-lg p-8 md:w-1/2 mb-8 md:mb-0">
+      <h1 class="text-2xl font-bold text-gray-800 text-center mb-6">Submit your e-waste</h1>
+      <form action="/result" method="POST" class="space-y-4">
+        <div>
+          <label for="category" class="block text-gray-700 font-semibold mb-2">Choose Category</label>
+          <select id="category" name="category" class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+              <option value="cat1">Cat1: Large Household Appliances</option>
+              <option value="cat2">Cat2: Smaller Appliances</option>
+              <option value="cat3">Cat3: IT and Telecommunication Devices</option>
+              <option value="cat4">Cat4: Mass Electronics</option>
+          </select>
+        </div>
+      
+        <div>
+          <label for="device_type" class="block text-gray-700 font-semibold mb-2">Device type</label>
+          <select id="device_type" name="device_type" class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+            {% for device in device_types %}
+              <option value="{{ device }}">{{ device }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      
+        <div>
+          <label for="brand" class="block text-gray-700 font-semibold mb-2">Brand</label>
+          <select id="brand" name="brand" class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+            {% for brand in brands %}
+              <option value="{{ brand }}">{{ brand }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      
+        <div>
+          <label for="model" class="block text-gray-700 font-semibold mb-2">Model</label>
+          <select id="model" name="model" class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+            {% for model in models %}
+              <option value="{{ model }}">{{ model }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      
+        <div>
+          <label for="condition" class="block text-gray-700 font-semibold mb-2">Condition</label>
+          <select id="condition" name="condition" class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <option value="avg">Average</option>
+            <option value="bad">Bad</option>
+            <option value="good">Good</option>
+          </select>
+        </div>
+        
+        <!-- New Device Age Input -->
+        <div>
+          <label for="device_age" class="block text-gray-700 font-semibold mb-2">Device Age (in years)</label>
+          <input type="number" id="device_age" name="device_age" min="0" class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Enter device age">
+        </div>
+      
+        <div class="text-center">
+          <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+            Predict Price
+          </button>
+        </div>
+      </form>
+      
+    </div>
+
+    <!-- Information Section (Right Half) -->
+    <div class="bg-blue-100 shadow-lg rounded-lg p-8 md:w-1/2 text-gray-700">
+      <h2 class="text-lg font-semibold mb-4">Category Information:</h2>
+      <p><strong>Category 1:</strong> Laptops, Desktops, and All-in-One PCs.</p>
+      <p><strong>Category 2:</strong> Smartphones and Tablets.</p>
+      <p><strong>Category 3:</strong> Wearable Devices such as Smartwatches and Fitness Bands.</p>
+      <p><strong>Category 4:</strong> Home Electronics like Smart TVs and Audio Systems.</p>
+    
+      <!-- Separator -->
+      <div class="border-t border-gray-300 my-6"></div>
+      
+      <!-- Buttons Section -->
+      <div class="flex space-x-4">
+        <a href="/blogs" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+          Check Out Blogs
+        </a>
+        <a href="/education-research" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-green-400">
+          Educational/Research Content
+        </a>
+      </div>
+    </div>
+  
+  </div>
+
+</div>
+
+</body>
+</html>

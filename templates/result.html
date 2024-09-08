@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Device Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .collapsible {
+      display: none;
+    }
+    .collapsible-button:hover {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+  <div class="flex flex-col md:flex-row w-full max-w-6xl">
+
+    <!-- Device Details Section -->
+    <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg">
+      <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Device Details</h1>
+
+      <!-- Metals Section -->
+      <div class="space-y-4">
+        <div class="flex justify-between items-center border-b py-2">
+          <span class="font-semibold text-gray-700">Silver:</span>
+          <span class="text-gray-500">{{ result_data['Silver (g)']|default('N/A') }}g</span>
+        </div>
+
+        <div class="flex justify-between items-center border-b py-2">
+          <span class="font-semibold text-gray-700">Gold:</span>
+          <span class="text-gray-500">{{ result_data['Gold (g)']|default('N/A') }}g</span>
+        </div>
+
+        <div class="flex justify-between items-center border-b py-2">
+          <span class="font-semibold text-gray-700">Mercury:</span>
+          <span class="text-gray-500">{{ result_data['Mercury (g)']|default('N/A') }}g</span>
+        </div>
+
+        <div class="flex justify-between items-center border-b py-2">
+          <span class="font-semibold text-gray-700">Lead:</span>
+          <span class="text-gray-500">{{ result_data['Lead (g)']|default('N/A') }}g</span>
+        </div>
+
+        <!-- Collapsible Section for Additional Metals -->
+        <div>
+          <button class="collapsible-button bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg w-full text-left">
+            View Additional Metals
+          </button>
+          <div class="collapsible bg-gray-50 p-4 rounded-lg space-y-2">
+            <div class="flex justify-between items-center border-b py-2">
+              <span class="font-semibold text-gray-700">Platinum:</span>
+              <span class="text-gray-500">{{ result_data['Platinum (g)']|default('N/A') }}g</span>
+            </div>
+            <div class="flex justify-between items-center border-b py-2">
+              <span class="font-semibold text-gray-700">Copper:</span>
+              <span class="text-gray-500">{{ result_data['Copper (g)']|default('N/A') }}g</span>
+            </div>
+            <div class="flex justify-between items-center border-b py-2">
+              <span class="font-semibold text-gray-700">Iron:</span>
+              <span class="text-gray-500">{{ result_data['Iron (g)']|default('N/A') }}g</span>
+            </div>
+            <div class="flex justify-between items-center border-b py-2">
+              <span class="font-semibold text-gray-700">Nickel:</span>
+              <span class="text-gray-500">{{ result_data['Nickel (g)']|default('N/A') }}g</span>
+            </div>
+            <div class="flex justify-between items-center border-b py-2">
+              <span class="font-semibold text-gray-700">Zinc:</span>
+              <span class="text-gray-500">{{ result_data['Zinc (g)']|default('N/A') }}g</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Price Section -->
+      <div class="mt-6 text-center">
+        <p class="text-xl font-bold text-gray-800 mb-4">Estimated Price: Rs. {{ result_data['Predicted Price ($)']|default('N/A') }}</p>
+        <div class="space-y-4">
+          <!-- Interested to Sell Button -->
+          <a href="/shops" class="block bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-green-400">
+            Interested to Sell?
+          </a>
+
+          <!-- Know More Button with Chatbot Icon -->
+          <a href="/chat" class="block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 flex items-center justify-center">
+            <svg class="w-5 h-5 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168a4.99 4.99 0 00-3.254 1.01 5.015 5.015 0 00-1.487 2.08 4.978 4.978 0 00-.442 2.074c-.017.62.016 1.236.092 1.844a3.274 3.274 0 01-1.626-.397 3.288 3.288 0 01-1.222-1.057A3.29 3.29 0 014 15.29a3.288 3.288 0 011.272-2.378c-.197-.628-.309-1.288-.31-1.958a4.97 4.97 0 01.272-1.09 4.992 4.992 0 012.392-2.48 4.992 4.992 0 014.968.548c.137.137.23.314.293.5a4.993 4.993 0 012.438-.657c2.48 0 4.49 2.01 4.49 4.49s-2.01 4.49-4.49 4.49a4.49 4.49 0 01-2.823-.957c-.133.027-.266.056-.4.093-.339.09-.674.223-.993.387a5.003 5.003 0 01-3.073-.658 5.02 5.02 0 01-2.328-4.17c.01-.837.228-1.662.638-2.353.323-.568.758-1.06 1.288-1.474a5.009 5.009 0 012.743-.984 5.007 5.007 0 014.198.77 5.004 5.004 0 011.417 1.943c.156.339.287.684.391 1.033a4.983 4.983 0 01.286 2.026c-.048.91-.215 1.818-.492 2.7-.238.747-.561 1.463-.941 2.126a4.485 4.485 0 01-2.018 1.603c-.544.225-1.145.295-1.725.237-.657-.061-1.33-.238-1.942-.484-.457-.153-.897-.336-1.317-.533-.083.1-.159.212-.227.324-.227.36-.476.71-.753 1.043a4.988 4.988 0 01-3.522 1.54z" />
+            </svg>
+            Know More About It
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Information Section -->
+    <div class="bg-blue-100 shadow-lg rounded-lg p-8 md:w-1/2 text-gray-700">
+      <h2 class="text-lg font-semibold mb-4">Category Information:</h2>
+      <p><strong>Category 1:</strong> Laptops, Desktops, and All-in-One PCs.</p>
+      <p><strong>Category 2:</strong> Smartphones and Tablets.</p>
+      <p><strong>Category 3:</strong> Wearable Devices such as Smartwatches and Fitness Bands.</p>
+      <p><strong>Category 4:</strong> Home Electronics like Smart TVs and Audio Systems.</p>
+  
+      <!-- Separator -->
+      <div class="border-t border-gray-300 my-6"></div>
+      
+      <!-- Buttons Section -->
+      <div class="flex space-x-4">
+        <a href="/blogs" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+          Check Out Blogs
+        </a>
+        <a href="/education-research" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-green-400">
+          Educational/Research Content
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const collapsibleButton = document.querySelector('.collapsible-button');
+      const collapsibleContent = document.querySelector('.collapsible');
+
+      collapsibleButton.addEventListener('click', () => {
+        if (collapsibleContent.style.display === 'none' || collapsibleContent.style.display === '') {
+          collapsibleContent.style.display = 'block';
+        } else {
+          collapsibleContent.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
