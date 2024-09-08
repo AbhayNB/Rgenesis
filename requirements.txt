@@ -1,9 +1,8 @@
-Flask==2.3.3
+Flask
 pandas
 scikit-learn
 gunicorn
-Flask==2.2.5
-Flask-JWT-Extended==4.6.0
+Flask-JWT-Extended
 Flask-Cors
 Flask-RESTful
 Flask-SQLAlchemy
