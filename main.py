@@ -129,4 +129,4 @@ def book(shop_id):
     return render_template('booking_confirmation.html', shop=shop)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
